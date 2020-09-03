@@ -9,5 +9,5 @@
     <string name="Btn">Confirm</string>
     <string name="Answer">Answer</string>
     <string name="correct">Total correct answer: </string>
-    <string name="incorrect">incorrect :</string>
+    <string name="incorrect">incorrect : $correctAnswers</string>
 </resources>

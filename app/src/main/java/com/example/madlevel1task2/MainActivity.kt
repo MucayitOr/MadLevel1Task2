@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initViews()
     }
@@ -27,49 +28,43 @@ class MainActivity : AppCompatActivity() {
         val answer4 = binding.Answer4.text.toString()
 
         if (answer1 == "T" || answer1 =="t"){
-            correctAnswers - 1
+            correctAnswers += 0
         }else{
-            correctAnswers + 0
+            correctAnswers -= 1
         }
 
         if (answer2 == "F" || answer2 == "f"){
-            correctAnswers - 1
+            correctAnswers += 0
         }else{
-            correctAnswers + 0
+            correctAnswers -= 1
         }
 
         if (answer3 == "F" || answer3 == "f"){
-            correctAnswers - 1
+            correctAnswers += 0
         }else{
-            correctAnswers + 0
-        }
-
-        if (answer3 == "F" || answer3 == "f"){
-            correctAnswers - 1
-        }else{
-            correctAnswers + 0
+            correctAnswers -= 1
         }
 
         if (answer4 == "F" || answer4 == "f"){
-            correctAnswers - 1
+            correctAnswers += 0
         }else{
-            correctAnswers + 0
+            correctAnswers -= 1
         }
-
-        onAnswerCorrect { correctAnswers }
-
+        onAnswerCorrect(correctAnswers)
     }
 
-    private fun onAnswerCorrect(Nbr: (Int) -> Int){
-        Toast.makeText(this, getString(R.string.correct) + Nbr, Toast.LENGTH_SHORT).show()
+    private fun onAnswerCorrect(str: Int){
+        val msg = getString(R.string.correct) + " $str"
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     private fun reset(){
-        when(correctAnswers){
-            1 -> (correctAnswers + 3)
-            2 -> (correctAnswers + 2)
-            3 -> (correctAnswers + 1)
-            4 -> (correctAnswers + 0)
+        when(correctAnswers) {
+            0 -> correctAnswers =+ 4
+            1 -> correctAnswers =+ 3
+            2 -> correctAnswers =+ 2
+            3 -> correctAnswers =+ 1
+            4 -> correctAnswers =+ 0
         }
     }
 
